@@ -8,12 +8,14 @@ import android.widget.BaseAdapter
 
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.youtubeapp.YouTubeDetails
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 class GridViewAdapter(val videos: ArrayList<YouTubeDetails>,
-                      val youTubePlayer: YouTubePlayer,
+                      val ytPlayer: YouTubePlayer,
                       val ytPlayerView: YouTubePlayerView,
                       val context: Context
 ) : BaseAdapter() {
@@ -61,13 +63,15 @@ class GridViewAdapter(val videos: ArrayList<YouTubeDetails>,
                 videoIcone == "lemon_cake" -> Icon = R.drawable.lemon_cake
                 videoIcone == "green_tea_cream_cake" -> Icon = R.drawable.green_tea_cream_cake
                 videoIcone == "roll_cake" -> Icon = R.drawable.roll_cake
+                videoIcone=="poundcake"->Icon=R.drawable.poundcake
             }
 
             ivIcon.setImageResource(Icon)
 
             tvTitle.setOnClickListener{
                 ytPlayerView.visibility = View.VISIBLE
-                youTubePlayer.cueVideo(ID, 0f)
+                ytPlayer.cueVideo(ID, 0f)
+
             }
         }
         return convertView
